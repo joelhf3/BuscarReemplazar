@@ -15,6 +15,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
+import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -62,6 +63,19 @@ public class BuscarReemplazar extends Application {
 		izquierda.setPadding(new Insets(5));
 		izquierda.setStyle("-fx-background-color: lightgreen;");
 		
+		ColumnConstraints [] cols = {
+				new ColumnConstraints(),	
+				new ColumnConstraints(),
+				new ColumnConstraints()
+			};
+		
+		izquierda.getColumnConstraints().setAll(cols);
+						
+		cols[1].setHgrow(Priority.ALWAYS);
+		cols[1].setFillWidth(true);
+		cols[2].setHgrow(Priority.ALWAYS);
+		cols[2].setFillWidth(true);
+		
 		GridPane.setColumnSpan(tfBuscar, 2);
 		GridPane.setColumnSpan(tfReemplazar, 2);
 		
@@ -71,7 +85,7 @@ public class BuscarReemplazar extends Application {
 		derecha.setStyle("-fx-background-color: orange;");
 
 		contenedor = new BorderPane();
-		contenedor.setLeft(izquierda);
+		contenedor.setCenter(izquierda);
 		contenedor.setRight(derecha);
 		
 		Scene scene = new Scene(contenedor, 600, 200);
