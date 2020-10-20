@@ -44,13 +44,26 @@ public class BuscarReemplazar extends Application {
 		btnCerrar.setMaxWidth(Double.MAX_VALUE);
 		btnAyuda = new Button("Ayuda");
 		btnAyuda.setMaxWidth(Double.MAX_VALUE);
-				
+		
+		tfBuscar = new TextField();
+		tfReemplazar = new TextField();
+		
 		cbMayusMinus = new CheckBox("Mayúsculas y Minúsculas");
 		cbExpresion = new CheckBox("Expresión regular");
 		cbAtras = new CheckBox("Buscar hacia atrás");
 		cbResaltar = new CheckBox("Resaltar resultados");
 		
 		izquierda = new GridPane();
+		izquierda.setHgap(5);
+		izquierda.setVgap(5);
+		izquierda.addColumn(0, lblBuscar, lblReemplazar);
+		izquierda.addColumn(1, tfBuscar, tfReemplazar, cbMayusMinus, cbExpresion);
+		izquierda.addColumn(2, new Label(), new Label(), cbAtras, cbResaltar);
+		izquierda.setPadding(new Insets(5));
+		izquierda.setStyle("-fx-background-color: lightgreen;");
+		
+		GridPane.setColumnSpan(tfBuscar, 2);
+		GridPane.setColumnSpan(tfReemplazar, 2);
 		
 		derecha = new VBox(btnBuscar, btnReemplazar, btnTodo, btnCerrar, btnAyuda);
 		derecha.setSpacing(5);
@@ -61,7 +74,7 @@ public class BuscarReemplazar extends Application {
 		contenedor.setLeft(izquierda);
 		contenedor.setRight(derecha);
 		
-		Scene scene = new Scene(contenedor, 600, 300);
+		Scene scene = new Scene(contenedor, 600, 200);
 		primaryStage.setTitle("Buscar y Reemplazar");
 		primaryStage.setScene(scene);
 		primaryStage.show();
